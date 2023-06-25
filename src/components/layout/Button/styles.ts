@@ -8,7 +8,7 @@ export default styled.div`
 
     .button {
         position: relative;
-        z-index: 2;
+        z-index: 1;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -112,7 +112,7 @@ export default styled.div`
     &.style-primary {
         &.variant-primary {
             .button {
-                background-color: #D9501E;
+                background-color: #4FC0BA;
                 color: #FFF;
             }
 
@@ -139,13 +139,13 @@ export default styled.div`
         &.variant-outline {
             .button {
                 background-color: transparent;
-                color: #36363b;
-                border: .01em solid #36363b;
+                color: #4FC0BA;
+                border: .01em solid #4FC0BA;
             }
 
             &:hover {
                 .button {
-                    background-color: #36363b;
+                    background-color: #4FC0BA;
                     color: #FFF;
                 }
             }
@@ -180,7 +180,7 @@ export default styled.div`
 
             &:hover {
                 .button {
-                    background-color: #6e6e6e;
+                    background-color: #E5E5E5;
                 }
             }
         }

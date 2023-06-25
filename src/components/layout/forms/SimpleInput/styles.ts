@@ -8,13 +8,11 @@ export default styled.div`
         width: 100%;
         border-radius: 6px;
         outline: none;
-        box-sizing: border-box;
-        font-family: 'Comfortaa', cursive;
     }
 
     &.primary-input {
         .input {
-            color: #333;
+            color: #6B7280;
             padding: .75em 1em .85em;
             box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
             font-size: 0.875em;
@@ -22,9 +20,8 @@ export default styled.div`
             border: 1px solid #F3F4F6;
 
             &::placeholder {
-                color: #333;
+                color: #AAAAAA;
             }
-
 
             &.error-input {
                 border: 2px solid #DC2626;
