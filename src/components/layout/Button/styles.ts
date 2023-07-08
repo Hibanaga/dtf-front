@@ -93,7 +93,7 @@ export default styled.div`
 
     &.size-medium {
         .button {
-            font-size: .9em;
+            font-size: 1em;
             min-width: 8em;
 
         }
@@ -112,13 +112,14 @@ export default styled.div`
     &.style-primary {
         &.variant-primary {
             .button {
-                background-color: #4FC0BA;
-                color: #FFF;
+                background-color: #FFF;
+                box-shadow: inset 0 -1px 0 0 rgba(0,0,0,0.06), 0 1px 2px 0 rgba(0,0,0,0.06);
+                transition: 150ms ease-in-out;
             }
 
             &:hover {
                 .button {
-                    opacity: .6;
+                    box-shadow: inset 0 -1px 0 0 rgba(0,0,0,0.06), 0 2px 4px 0 rgba(0,0,0,0.08);
                 }
             }
         }

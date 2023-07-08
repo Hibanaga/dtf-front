@@ -13,9 +13,8 @@ export default styled.header`
     .layout-layout-container {
         margin: 0 1.5em;
         display: grid;
-        grid-template-columns: calc(2 / 12 * 100%) calc(4 / 12 * 100%) calc(2 / 12 * 100%);
+        grid-template-columns: calc(2 / 12 * 100%) calc(6 / 12 * 100%) calc(2 / 12 * 100%);
         justify-content: space-between;
-        
         
         .column {
             height: 100%;
@@ -23,7 +22,6 @@ export default styled.header`
             align-items: center;
             
             &.column-menu {
-                
                 .logo-text {
                     margin-top: .1em;
                     font-size: 1.75em;
