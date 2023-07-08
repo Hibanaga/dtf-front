@@ -3,19 +3,21 @@ import KeyboardReturnRoundedIcon from '@mui/icons-material/KeyboardReturnRounded
 import classnames from 'classnames';
 
 import { Option } from 'types/options';
+import { IconPositionVariants } from 'types/page';
 
-import { IconPopoverPositions, Props } from './index';
+import {  Props } from './index';
 import StyledComponent from './styles';
 
-const LayoutPopower: FunctionComponent<Props> = ({ children, className, elements, icon, position, headline, hasSeenResultsButton }) => {
+const LayoutPopower: FunctionComponent<Props> = ({ children, className, elements, icon, position, headline, hasSeenResultsButton, onClick }) => {
     const ListElement = (element: Option<string>) => (
         <li
             key={element.value}
             className="list-popover-element"
+            onClick={() => onClick && onClick(element)}
         >
-            {position === IconPopoverPositions.Start && icon}
+            {position === IconPositionVariants.Start && icon}
             <span className="data-value">{element.label}</span>
-            {position === IconPopoverPositions.End && icon}
+            {position === IconPositionVariants.End && icon}
         </li>
     );
 

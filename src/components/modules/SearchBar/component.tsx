@@ -1,18 +1,24 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
+import EditNoteRoundedIcon from '@mui/icons-material/EditNoteRounded';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 
 import { LocalStorageKeys } from 'types/localStorage';
 import { Option } from 'types/options';
+import { IconPositionVariants } from 'types/page';
 
+import { dedupeObjects } from 'utils/array';
 import { getItem, setItem } from 'utils/localStorage';
 
-import Button, { ButtonSizes, ButtonStyles, ButtonVariants } from 'components/layout/Button';
+import Button from 'components/layout/Button';
 import Input from 'components/layout/forms/SimpleInput';
-import Popover, { IconPopoverPositions } from 'components/layout/Popover';
+import Popover from 'components/layout/Popover';
 
 import { Props } from './index';
 import StyledComponent from './styles';
 
+
+//TODO: after integrate API for search on system add redirect to click on element popover
+//TODO: handle situation when click to recent element, popover must save this element to searchbar, but now this doesn't work properly
 const ModuleSearchBar: FunctionComponent<Props> = ({ children }) => {
     const [search, setSearch] = useState('');
     const [isFocusedInput, setIsFocusedInput] = useState(false);
@@ -31,7 +37,7 @@ const ModuleSearchBar: FunctionComponent<Props> = ({ children }) => {
 
     const handleDetectKeydown = (e) => {
         if (e.keyCode === 13) {
-            const newValueRecentQuestions = [...recentSearchItems, { label: search, value: search }];
+            const newValueRecentQuestions = dedupeObjects([...recentSearchItems, { label: search, value: search }], 'value');
             setRecentSearchItems(newValueRecentQuestions);
             setItem(LocalStorageKeys.RECENT_SEARCH_ITEMS, JSON.stringify(newValueRecentQuestions));
         }
@@ -53,23 +59,25 @@ const ModuleSearchBar: FunctionComponent<Props> = ({ children }) => {
                     <Popover
                         headline="Схожі запитання"
                         icon={<SearchRoundedIcon />}
+                        position={IconPositionVariants.Start}
                         elements={recentSearchItems}
+                        onClick={(newValue: Option<string>) => setSearch(newValue.value)}
                     />
                 )}
 
                 {showSearchListPopover && (
                     <Popover
                         hasSeenResultsButton
-                        position={IconPopoverPositions.Start}
-                        icon={<SearchRoundedIcon />}
                         elements={[]}
+                        onClick={(newValue: Option<string>) => null}
                     />
                 )}
             </div>
             <Button
-                size={ButtonSizes.Medium}
-                variant={ButtonVariants.Primary}
-                style={ButtonStyles.Primary}
+                icon={{
+                    position: IconPositionVariants.Start,
+                    value: <EditNoteRoundedIcon />,
+                }}
             >
                 Написати
             </Button>

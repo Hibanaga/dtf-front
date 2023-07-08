@@ -1,3 +1,7 @@
+import { ReactNode } from 'react';
+
+import { IconPositionVariants } from 'types/page';
+
 import Component from './component';
 
 export enum ButtonTypes {
@@ -36,15 +40,10 @@ export enum ButtonSizes {
     Large = 'large',
 }
 
-export enum ButtonIconTypes {
-    Image = 'image',
-    Element = 'element',
-}
 
 export interface ListProps extends Props {
     key: string;
 }
-
 
 export interface Props {
     children: any;
@@ -54,8 +53,8 @@ export interface Props {
     onClick?: Function;
     href?: string;
     icon?: {
-        type: ButtonIconTypes;
-        value: any;
+        position: IconPositionVariants;
+        value: ReactNode;
     };
     disabled?: boolean;
     size?: ButtonSizes;

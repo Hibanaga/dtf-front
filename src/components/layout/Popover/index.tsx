@@ -1,21 +1,18 @@
 import { ReactNode } from 'react';
 
 import { Option } from 'types/options';
+import { IconPositionVariants } from 'types/page';
 
 import Component from './component';
-
-export enum IconPopoverPositions {
-    Start = 'start',
-    End = 'end',
-}
 
 export interface Props {
     headline?: string;
     children?: ReactNode;
     className?: string;
     icon?: ReactNode;
-    position?: IconPopoverPositions;
+    position?: IconPositionVariants;
     elements: Option<string>[];
+    onClick?: (newValue: Option<string>) => void;
     hasSeenResultsButton?: boolean;
 }
 
