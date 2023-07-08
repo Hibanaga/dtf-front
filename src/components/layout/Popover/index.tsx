@@ -20,7 +20,7 @@ export interface Props {
 }
 
 Component.defaultProps = {
-    hasSeenResultsButton: true,
+    hasSeenResultsButton: false,
 };
 
 export default Component;

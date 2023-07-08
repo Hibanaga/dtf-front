@@ -1,63 +1,70 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
+
+import { LocalStorageKeys } from 'types/localStorage';
+import { Option } from 'types/options';
+
+import { getItem, setItem } from 'utils/localStorage';
 
 import Button, { ButtonSizes, ButtonStyles, ButtonVariants } from 'components/layout/Button';
 import Input from 'components/layout/forms/SimpleInput';
-import Popover from 'components/layout/Popover';
+import Popover, { IconPopoverPositions } from 'components/layout/Popover';
 
 import { Props } from './index';
 import StyledComponent from './styles';
 
 const ModuleSearchBar: FunctionComponent<Props> = ({ children }) => {
     const [search, setSearch] = useState('');
-    const [recentSearchItems, setRecentSearchItems] = useState([]);
+    const [isFocusedInput, setIsFocusedInput] = useState(false);
+    const [recentSearchItems, setRecentSearchItems] = useState<Option<string>[]>([]);
+
+    const showRecentQuestionsPopover = isFocusedInput && !search?.length && !!recentSearchItems?.length;
+    const showSearchListPopover = isFocusedInput && !!search?.length;
+
+    useEffect(() => {
+        const recentSearchItems = getItem(LocalStorageKeys.RECENT_SEARCH_ITEMS);
+
+        if (recentSearchItems) {
+            setRecentSearchItems(JSON.parse(recentSearchItems));
+        }
+    }, []);
+
+    const handleDetectKeydown = (e) => {
+        if (e.keyCode === 13) {
+            const newValueRecentQuestions = [...recentSearchItems, { label: search, value: search }];
+            setRecentSearchItems(newValueRecentQuestions);
+            setItem(LocalStorageKeys.RECENT_SEARCH_ITEMS, JSON.stringify(newValueRecentQuestions));
+        }
+    };
 
     return (
         <StyledComponent className="module-search-bar">
             <div className="smart-search-bar">
                 <Input
                     placeholder="Пошук"
+                    onFocus={() => setIsFocusedInput(true)}
+                    onBlur={() => setIsFocusedInput(false)}
+                    onKeyDown={handleDetectKeydown}
+                    value={search}
                     onChange={(e) => setSearch(e.target.value)}
                 />
 
-                {/*<ul className="list-hints">*/}
-                {/*    {recentSearchItems.map((element) => (*/}
-                {/*        <li*/}
-                {/*            key={element}*/}
-                {/*            className="hint-element"*/}
-                {/*        >*/}
-                {/*            <span className="data-text">{element}</span>*/}
-                {/*        </li>*/}
-                {/*    ))}*/}
-                {/*</ul>*/}
+                {showRecentQuestionsPopover && (
+                    <Popover
+                        headline="Схожі запитання"
+                        icon={<SearchRoundedIcon />}
+                        elements={recentSearchItems}
+                    />
+                )}
 
-                {/*<Popover*/}
-                {/*    headline="popover headline"*/}
-                {/*    icon={<SearchRoundedIcon />}*/}
-                {/*    elements={[*/}
-                {/*        {*/}
-                {/*            label: '12',*/}
-                {/*            value: '12',*/}
-                {/*        },*/}
-                {/*    ]}*/}
-                {/*/>*/}
-
-
-                <Popover
-                    hasSeenResultsButton
-                    icon={<SearchRoundedIcon />}
-                    elements={[
-                        {
-                            label: '12',
-                            value: '12',
-                        },
-                    ]}
-                />
-                {/*<ul className="list-results">*/}
-                {/*    <li className="list-result-element">*/}
-                {/*        <span className="data-text"></span>*/}
-                {/*    </li>*/}
-                {/*</ul>*/}
+                {showSearchListPopover && (
+                    <Popover
+                        hasSeenResultsButton
+                        position={IconPopoverPositions.Start}
+                        icon={<SearchRoundedIcon />}
+                        elements={[]}
+                    />
+                )}
             </div>
             <Button
                 size={ButtonSizes.Medium}

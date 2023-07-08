@@ -39,7 +39,7 @@ const LayoutPopower: FunctionComponent<Props> = ({ children, className, elements
                     {hasSeenResultsButton && (
                         <li className={classnames(['list-popover-element', 'no-result-element'])}>
                             <KeyboardReturnRoundedIcon />
-                            <span className="data-value">Перейти к результатам</span>
+                            <span className="data-value">Перейти до результатів</span>
                         </li>
                     )}
                 </ul>
