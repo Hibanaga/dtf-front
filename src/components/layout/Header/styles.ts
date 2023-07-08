@@ -13,7 +13,7 @@ export default styled.header`
     .layout-layout-container {
         margin: 0 1.5em;
         display: grid;
-        grid-template-columns: calc(2 / 12 * 100%) calc(6 / 12 * 100%) calc(2 / 12 * 100%);
+        grid-template-columns: calc(2 / 12 * 100%) calc(5 / 12 * 100%) calc(2 / 12 * 100%);
         justify-content: space-between;
         
         .column {

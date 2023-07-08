@@ -27,7 +27,7 @@ export default styled.div`
 
             &:focus {
                 background-color: #FFF;
-                border-color: #2563eb;
+                box-shadow: 0 0 0 3px rgba(22,147,229,0.12);
             }
 
             &:disabled {
