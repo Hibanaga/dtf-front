@@ -5,6 +5,7 @@ export default styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
 
     .button {
         position: relative;
@@ -51,10 +52,12 @@ export default styled.div`
     }
 
     .button-icon {
-        margin-left: .5em;
-
-        .button-icon-image {
-            width: .7em;
+        &.start {
+           margin-right: .25em; 
+        }
+        
+        &.end {
+            margin-left: .25em;
         }
     }
 

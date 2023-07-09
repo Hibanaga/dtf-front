@@ -9,8 +9,19 @@ export default styled.div`
 
     .smart-search-bar {
         width: 60%;
-        
         position: relative;
+        
+        .layout-forms-simple-input {
+            height: 100%;
+            
+            .inner-input {
+                height: 100%;
+                
+                .input {
+                    height: 100%;
+                }
+            }
+        }
     }
 
     .layout-button {

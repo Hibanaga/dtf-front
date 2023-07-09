@@ -35,17 +35,63 @@ export default styled.header`
             &.column-activity {
                 justify-content: flex-end;
                 
-                .icon-button-notification {
-                    cursor: pointer;
-                    margin: .3em 0 0 .5em;
-                    padding: .5em;
+                .inner-notifications {
+                    position: relative;
                     
-                    .icon {
-                        font-size: 1.8em;
-                        transition: 150ms;
-                        
-                        &:hover {
-                            color: #1693e5;
+                    .icon-button-notification {
+                        cursor: pointer;
+                        margin: .3em 0 0 .5em;
+                        padding: .5em;
+
+                        .icon {
+                            font-size: 1.8em;
+                            transition: 150ms;
+
+                            &:hover {
+                                color: #1693e5;
+                            }
+                        }
+
+                        &.active {
+                            .icon {
+                                transform: rotate(30deg);
+                                color: #1693e5;
+                            }
+                        }
+                    }
+                    
+                    .module-notifications-popover {
+                        .body {
+                            .template-notification-un-login-element {
+                                display: flex;
+                                
+                                .inner-icon {
+                                    min-width: 2.6em;
+                                    height: 2.6em;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    background-color: #eaf8ef;
+                                    border-radius: .25em;
+                                    border: .01em solid rgba(116,116,116,.25);
+                                    
+                                    .icon {
+                                        color: #07a23b;
+                                    }
+                                }
+                                
+                                .inner-content {
+                                    margin-left: .5em;
+                                    
+                                    .data-text {
+                                        font-size: .8em;
+                                    }
+                                    
+                                    .inner-login-actions {
+                                        margin-top: 1em;
+                                    }
+                                }
+                            }
                         }
                     }
                 }

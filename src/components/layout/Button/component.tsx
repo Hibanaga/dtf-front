@@ -2,7 +2,9 @@ import { FunctionComponent } from 'react';
 import { useRouter } from 'next/router';
 import classnames from 'classnames';
 
-import { ButtonElements, ButtonIconTypes, Props } from './index';
+import { IconPositionVariants } from 'types/page';
+
+import { ButtonElements, Props } from './index';
 import StyledComponent from './styles';
 
 const LayoutButton: FunctionComponent<Props> = ({
@@ -48,27 +50,14 @@ const LayoutButton: FunctionComponent<Props> = ({
         return onClick && onClick();
     };
 
-    const getIcon = () => {
-        if (!icon) return null;
-
-        if (icon.type === ButtonIconTypes.Element) {
-            return icon.value || null;
-        }
-
-        if (icon.type === ButtonIconTypes.Image) {
-            return (
-                <img
-                    className="button-icon-image"
-                    src={icon.value}
-                />
-            );
-        }
-
-        return null;
-    };
-
     const getContent = () => {
         return  <span className="button-content">{children}</span>;
+    };
+
+    const getIcon = (icon) => {
+        if (!icon) return null;
+
+        return <span className={classnames(['button-icon', icon.position])}>{icon.value}</span>;
     };
 
     const getElement = () => {
@@ -83,7 +72,9 @@ const LayoutButton: FunctionComponent<Props> = ({
                 ])}
                 {...buttonProps}
             >
+                {icon?.position === IconPositionVariants.Start && getIcon(icon)}
                 {getContent()}
+                {icon?.position === IconPositionVariants.End && getIcon(icon)}
             </button>
         );
 

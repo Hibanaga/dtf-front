@@ -21,7 +21,7 @@ const SimpleInput: FunctionComponent<Props> = ({ id, label, placeholder, value, 
                     label={label}
                 />
             )}
-            <div className="">
+            <div className="inner-input">
                 <input
                     type={type}
                     min="0"
@@ -33,9 +33,6 @@ const SimpleInput: FunctionComponent<Props> = ({ id, label, placeholder, value, 
                     )}
                     placeholder={placeholder}
                     onChange={onChange}
-                    // onFocus={onFocus}
-                    // onBlur={onBlur}
-                    // onKeyDown={onKeyDown}
                     value={value}
                     disabled={disabled}
                     {...restEventHandlers}
