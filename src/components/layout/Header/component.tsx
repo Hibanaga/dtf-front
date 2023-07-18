@@ -1,10 +1,14 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 import LoginRoundedIcon from '@mui/icons-material/LoginRounded';
 import MailOutlineRoundedIcon from '@mui/icons-material/MailOutlineRounded';
 import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneRounded';
 import PriorityHighRoundedIcon from '@mui/icons-material/PriorityHighRounded';
 import classnames from 'classnames';
 import { Rotate as Hamburger } from 'hamburger-react';
+
+import { LocalStorageKeys } from 'types/localStorage';
+
+import { getItem, setItem } from 'utils/localStorage';
 
 import Container from 'components/layout/Container';
 import IconButton from 'components/layout/IconButton';
@@ -14,8 +18,24 @@ import SearchBar from 'components/modules/SearchBar';
 import { Props } from './index';
 import StyledComponent from './styles';
 
+//TODO: Handle notification situation when user login and unlogin, and counter notifications
 const LayoutHeader: FunctionComponent<Props> = ({ }) => {
+    // const hasNotificationUnlogin = getItem(LocalStorageKeys.UN_LOGIN_NOTIFICATION_STATUS) === 'false';
+
+    // console.log('hasNotificationUnlogin: ', hasNotificationUnlogin);
+    //
+    // const [hasUnLoginNotification, setHasUnLoginNotification] = useState<boolean>(!hasNotificationUnlogin);
     const [isShowNotifications, setIsShowNotifications] = useState(false);
+
+
+    const handleToggleNotificationButton = () => {
+        setIsShowNotifications(!isShowNotifications);
+
+        // if (hasUnLoginNotification) {
+        //     setHasUnLoginNotification(false);
+        //     setItem(LocalStorageKeys.UN_LOGIN_NOTIFICATION_STATUS, JSON.stringify(false));
+        // }
+    };
 
     return (
         <StyledComponent className={'layout-header'}>
@@ -34,29 +54,38 @@ const LayoutHeader: FunctionComponent<Props> = ({ }) => {
                                 'icon-button-notification',
                                 isShowNotifications && 'active',
                             ])}
-                            onClick={() => setIsShowNotifications(!isShowNotifications)}
+                            onClick={handleToggleNotificationButton}
                         >
                             <NotificationsNoneRoundedIcon className="icon" />
+
+                            {hasUnLoginNotification && (
+                                <div className="inner-counter-notification">
+                                    <span className="notification-count">1</span>
+                                </div>
+                            )}
                         </div>
 
-                        <NotificationsPopover headline={'повідомлення'}>
-                            <div className="template-notification-un-login-element">
-                                <div className="inner-icon">
-                                    <PriorityHighRoundedIcon className="icon" />
-                                </div>
+                        {isShowNotifications && (
+                            <NotificationsPopover headline={'повідомлення'}>
+                                <div className="template-notification-un-login-element">
+                                    <div className="inner-icon">
+                                        <PriorityHighRoundedIcon className="icon" />
+                                    </div>
 
-                                <div className="inner-content">
-                                    <span className="data-text">
+                                    <div className="inner-content">
+                                        <span className="data-text">
                                         Авторизуйтесь або зареєструйтесь, щоб оцінювати матеріали, створювати записи та писати коментарі.
-                                    </span>
-                                    <div className="inner-login-actions">
-                                        <IconButton>
-                                            <MailOutlineRoundedIcon />
-                                        </IconButton>
+                                        </span>
+                                        <div className="inner-login-actions">
+                                            <IconButton>
+                                                <MailOutlineRoundedIcon />
+                                            </IconButton>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </NotificationsPopover>
+                            </NotificationsPopover>
+                        )}
+
                     </div>
 
                     <div className="inner-sign-in">
