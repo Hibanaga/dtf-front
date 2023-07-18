@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 import LoginRoundedIcon from '@mui/icons-material/LoginRounded';
 import MailOutlineRoundedIcon from '@mui/icons-material/MailOutlineRounded';
 import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneRounded';
@@ -20,11 +20,14 @@ import StyledComponent from './styles';
 
 //TODO: Handle notification situation when user login and unlogin, and counter notifications
 const LayoutHeader: FunctionComponent<Props> = ({ }) => {
-    const hasNotificationUnlogin = getItem(LocalStorageKeys.UN_LOGIN_NOTIFICATION_STATUS);
+    const hasNotifications = JSON.parse(getItem(LocalStorageKeys.UN_LOGIN_NOTIFICATION_STATUS) || '1');
 
-    const [hasUnLoginNotification, setHasUnLoginNotification] = useState<boolean>(Boolean(Number(hasNotificationUnlogin)));
+    const [hasUnLoginNotification, setHasUnLoginNotification] = useState<boolean>(false);
     const [isShowNotifications, setIsShowNotifications] = useState(false);
 
+    useEffect(() => {
+        setHasUnLoginNotification(Boolean(hasNotifications));
+    }, []);
 
     const handleToggleNotificationButton = () => {
         setIsShowNotifications(!isShowNotifications);
@@ -36,7 +39,7 @@ const LayoutHeader: FunctionComponent<Props> = ({ }) => {
     };
 
     return (
-        <StyledComponent className={'layout-header'}>
+        <StyledComponent className="layout-header">
             <Container className="layout-layout-container">
                 <div className="column column-menu">
                     <Hamburger size={25} />

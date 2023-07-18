@@ -27,10 +27,15 @@ export default styled.div`
     .layout-button {
         .button {
             height: 100%;
+            padding: .5em 1.3em;
             
-            svg {
-                width: .75em;
-                height: .75em;
+            .button-icon {
+                margin-top: .125em;
+                
+                svg {
+                    width: .75em;
+                    height: .75em;
+                }
             }
         }
     }
