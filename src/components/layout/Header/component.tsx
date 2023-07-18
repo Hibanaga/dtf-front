@@ -64,7 +64,7 @@ const LayoutHeader: FunctionComponent<Props> = ({ }) => {
                         </div>
 
                         {isShowNotifications && (
-                            <NotificationsPopover headline={'повідомлення'}>
+                            <NotificationsPopover headline={'Повідомлення'}>
                                 <div className="template-notification-un-login-element">
                                     <div className="inner-icon">
                                         <PriorityHighRoundedIcon className="icon" />

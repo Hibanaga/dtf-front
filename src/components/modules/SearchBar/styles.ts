@@ -27,6 +27,11 @@ export default styled.div`
     .layout-button {
         .button {
             height: 100%;
+            
+            svg {
+                width: .75em;
+                height: .75em;
+            }
         }
     }
 

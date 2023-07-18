@@ -125,6 +125,12 @@ export default styled.div`
                     box-shadow: inset 0 -1px 0 0 rgba(0,0,0,0.06), 0 2px 4px 0 rgba(0,0,0,0.08);
                 }
             }
+            
+            &:active {
+                .button {
+                    box-shadow: inset 0 -1px 0 0 rgba(0,0,0,0.06), 0 0 2px 0 rgba(0,0,0,0.04);
+                }
+            }
         }
 
         &.variant-contained {

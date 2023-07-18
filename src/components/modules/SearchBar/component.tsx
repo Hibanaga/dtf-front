@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
-import EditNoteRoundedIcon from '@mui/icons-material/EditNoteRounded';
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 
 import { LocalStorageKeys } from 'types/localStorage';
@@ -86,7 +86,7 @@ const ModuleSearchBar: FunctionComponent<Props> = ({ children }) => {
             <Button
                 icon={{
                     position: IconPositionVariants.Start,
-                    value: <EditNoteRoundedIcon />,
+                    value: <EditOutlinedIcon />,
                 }}
             >
                 Написати
