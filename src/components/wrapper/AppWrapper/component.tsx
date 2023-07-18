@@ -1,7 +1,8 @@
 import React, { FunctionComponent } from 'react';
 import { Theme, ToastContainer, ToastPosition } from 'react-toastify';
 
-import Header from '../../layout/Header';
+import Head from 'components/layout/Head';
+import Header from 'components/layout/Header';
 
 import { Props } from './index';
 import StyledComponent from './styles';
@@ -22,6 +23,7 @@ const toastConfig = {
 const AppWrapper: FunctionComponent<Props> = ({ children }) => {
     return (
         <StyledComponent className="wrapper-app">
+            <Head title="Home" />
             <Header />
             {children}
             <ToastContainer {...toastConfig} />

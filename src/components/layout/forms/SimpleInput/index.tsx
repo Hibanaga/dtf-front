@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, KeyboardEventHandler } from 'react';
 
 import Component from './component';
 
@@ -13,6 +13,7 @@ export interface Props {
     placeholder?: string;
     value?: string;
     onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+    onKeyDown?: (e: KeyboardEventHandler<HTMLInputElement>) => void;
     onFocus?: () => void;
     onBlur?: () => void;
     name?: string;

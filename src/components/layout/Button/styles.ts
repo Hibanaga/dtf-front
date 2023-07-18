@@ -5,6 +5,7 @@ export default styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
 
     .button {
         position: relative;
@@ -51,10 +52,12 @@ export default styled.div`
     }
 
     .button-icon {
-        margin-left: .5em;
-
-        .button-icon-image {
-            width: .7em;
+        &.start {
+           margin-right: .25em; 
+        }
+        
+        &.end {
+            margin-left: .25em;
         }
     }
 
@@ -93,7 +96,7 @@ export default styled.div`
 
     &.size-medium {
         .button {
-            font-size: .9em;
+            font-size: 1em;
             min-width: 8em;
 
         }
@@ -112,14 +115,28 @@ export default styled.div`
     &.style-primary {
         &.variant-primary {
             .button {
-                background-color: #4FC0BA;
-                color: #FFF;
+                background-color: #FFF;
+                box-shadow: inset 0 -1px 0 0 rgba(0,0,0,0.06), 0 1px 2px 0 rgba(0,0,0,0.06);
+                transition: 150ms ease-in-out;
             }
 
             &:hover {
                 .button {
-                    opacity: .6;
+                    box-shadow: inset 0 -1px 0 0 rgba(0,0,0,0.06), 0 2px 4px 0 rgba(0,0,0,0.08);
                 }
+            }
+            
+            &:active {
+                .button {
+                    box-shadow: inset 0 -1px 0 0 rgba(0,0,0,0.06), 0 0 2px 0 rgba(0,0,0,0.04);
+                }
+            }
+        }
+        
+        &.variant-simple {
+            .button {
+                background-color: transparent;
+                padding: 0;
             }
         }
 

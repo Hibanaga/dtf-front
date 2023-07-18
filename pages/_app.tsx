@@ -14,7 +14,7 @@ import AppWrapper from '../src/components/wrapper/AppWrapper';
 
 import 'theme/styles/globals.css';
 
-export default function App({ Component, pageProps }: AppProps) {
+const App = ({ Component, pageProps }: AppProps) => {
     const router = useRouter();
 
     return (
@@ -56,4 +56,6 @@ export default function App({ Component, pageProps }: AppProps) {
             </>
         </AppContextProvider>
     );
-}
+};
+
+export default App;
