@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import LoginRoundedIcon from '@mui/icons-material/LoginRounded';
 import MailOutlineRoundedIcon from '@mui/icons-material/MailOutlineRounded';
 import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneRounded';
@@ -20,21 +20,19 @@ import StyledComponent from './styles';
 
 //TODO: Handle notification situation when user login and unlogin, and counter notifications
 const LayoutHeader: FunctionComponent<Props> = ({ }) => {
-    // const hasNotificationUnlogin = getItem(LocalStorageKeys.UN_LOGIN_NOTIFICATION_STATUS) === 'false';
+    const hasNotificationUnlogin = getItem(LocalStorageKeys.UN_LOGIN_NOTIFICATION_STATUS);
 
-    // console.log('hasNotificationUnlogin: ', hasNotificationUnlogin);
-    //
-    // const [hasUnLoginNotification, setHasUnLoginNotification] = useState<boolean>(!hasNotificationUnlogin);
+    const [hasUnLoginNotification, setHasUnLoginNotification] = useState<boolean>(Boolean(Number(hasNotificationUnlogin)));
     const [isShowNotifications, setIsShowNotifications] = useState(false);
 
 
     const handleToggleNotificationButton = () => {
         setIsShowNotifications(!isShowNotifications);
 
-        // if (hasUnLoginNotification) {
-        //     setHasUnLoginNotification(false);
-        //     setItem(LocalStorageKeys.UN_LOGIN_NOTIFICATION_STATUS, JSON.stringify(false));
-        // }
+        if (hasUnLoginNotification) {
+            setHasUnLoginNotification(false);
+            setItem(LocalStorageKeys.UN_LOGIN_NOTIFICATION_STATUS, JSON.stringify(0));
+        }
     };
 
     return (
