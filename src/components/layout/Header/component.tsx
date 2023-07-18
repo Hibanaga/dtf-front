@@ -7,9 +7,11 @@ import classnames from 'classnames';
 import { Rotate as Hamburger } from 'hamburger-react';
 
 import { LocalStorageKeys } from 'types/localStorage';
+import { IconPositionVariants } from 'types/page';
 
 import { getItem, setItem } from 'utils/localStorage';
 
+import Button, { ButtonVariants } from 'components/layout/Button';
 import Container from 'components/layout/Container';
 import IconButton from 'components/layout/IconButton';
 import NotificationsPopover from 'components/modules/NotificationsPopover';
@@ -90,8 +92,16 @@ const LayoutHeader: FunctionComponent<Props> = ({ }) => {
                     </div>
 
                     <div className="inner-sign-in">
-                        <LoginRoundedIcon className="icon" />
-                        <span className="content">Увійти</span>
+                        <Button
+                            className="sign-in-button"
+                            variant={ButtonVariants.Simple}
+                            icon={{
+                                position:IconPositionVariants.Start,
+                                value: <LoginRoundedIcon />,
+                            }}
+                        >
+                            Увійти
+                        </Button>
                     </div>
                 </div>
             </Container>

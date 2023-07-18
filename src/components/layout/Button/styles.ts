@@ -132,6 +132,13 @@ export default styled.div`
                 }
             }
         }
+        
+        &.variant-simple {
+            .button {
+                background-color: transparent;
+                padding: 0;
+            }
+        }
 
         &.variant-contained {
             .button {

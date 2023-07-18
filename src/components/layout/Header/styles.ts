@@ -40,9 +40,9 @@ export default styled.header`
 
                     .icon-button-notification {
                         cursor: pointer;
-                        margin: .3em 0 0 .5em;
                         padding: .5em;
                         position: relative;
+                        margin-top: .175em;
 
                         .inner-counter-notification {
                             position: absolute;
@@ -124,26 +124,39 @@ export default styled.header`
                     align-items: center;
                     padding: .5em;
                     cursor: pointer;
-
-                    .icon {
-                        font-size: 1.5em;
-                        transition: 150ms;
-                    }
-
-                    .content {
-                        transition: 150ms;
-                        margin-left: .5em;
-                        display: block;
-                        margin-top: .2em;
-                    }
-
-                    &:hover {
-                        .icon {
-                            color: #1693e5;
+                    
+                    .sign-in-button {
+                        .button {
+                            min-width: 4em;
+                            
+                            .button-icon {
+                                margin-top: .175em;
+                                
+                                svg {
+                                    transition: 150ms;
+                                }
+                            }
+                            
+                            .button-content {
+                                transition: 150ms;
+                                display: block;
+                                font-size: 1.1em;
+                                margin-left: .2em;
+                            }
                         }
 
-                        .content {
-                            color: #1693e5;
+                        &:hover {
+                            .button {
+                                .button-icon {
+                                    svg {
+                                        color: #1693e5;
+                                    }
+                                }
+
+                                .button-content {
+                                    color: #1693e5;
+                                }
+                            }
                         }
                     }
                 }

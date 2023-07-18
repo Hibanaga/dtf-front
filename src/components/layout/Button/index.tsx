@@ -26,6 +26,7 @@ export enum ButtonVariants {
     Contained = 'contained',
     Outline = 'outline',
     Link = 'link',
+    Simple = 'simple',
 }
 
 export enum ButtonLayouts {
