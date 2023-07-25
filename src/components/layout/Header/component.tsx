@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState } from 'react';
+import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
 import LoginRoundedIcon from '@mui/icons-material/LoginRounded';
 import MailOutlineRoundedIcon from '@mui/icons-material/MailOutlineRounded';
 import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneRounded';
@@ -16,16 +16,29 @@ import Container from 'components/layout/Container';
 import IconButton from 'components/layout/IconButton';
 import NotificationsPopover from 'components/modules/NotificationsPopover';
 import SearchBar from 'components/modules/SearchBar';
+import { useOnClickOutside } from 'hooks/useOnClickOutside';
 
 import { Props } from './index';
 import StyledComponent from './styles';
 
 //TODO: Handle notification situation when user login and unlogin, and counter notifications
 const LayoutHeader: FunctionComponent<Props> = ({ }) => {
-    const hasNotifications = JSON.parse(getItem(LocalStorageKeys.UN_LOGIN_NOTIFICATION_STATUS) || '1');
+    const ref = useRef(null);
+
+    let hasNotifications = null;
+    useEffect(() => {
+        hasNotifications = localStorage && JSON.parse(getItem(LocalStorageKeys.UN_LOGIN_NOTIFICATION_STATUS) || '1');
+    }, []);
+
 
     const [hasUnLoginNotification, setHasUnLoginNotification] = useState<boolean>(false);
     const [isShowNotifications, setIsShowNotifications] = useState(false);
+
+    const handleClickOutside = () => {
+        setIsShowNotifications(false);
+    };
+
+    useOnClickOutside(ref, handleClickOutside);
 
     useEffect(() => {
         setHasUnLoginNotification(Boolean(hasNotifications));
@@ -51,7 +64,10 @@ const LayoutHeader: FunctionComponent<Props> = ({ }) => {
                     <SearchBar />
                 </div>
                 <div className="column column-activity">
-                    <div className="inner-notifications">
+                    <div
+                        ref={ref}
+                        className="inner-notifications"
+                    >
                         <div
                             className={classnames([
                                 'icon-button-notification',
