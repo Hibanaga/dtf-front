@@ -32,5 +32,9 @@ export default styled.div`
         &:hover {
             box-shadow: 0 1px 3px rgba(0,0,0,.12), inset 0 0 0 1px rgba(0,0,0,.06), inset 0 -1px 0 rgba(0,0,0,.12), inset 1px 0 0 rgba(0,0,0,.06), inset -1px 0 0 rgba(0,0,0,.06);
         }
+        
+        &:active {
+            box-shadow: inset 0 0 0 1px rgba(0,0,0,.06), inset 0 -1px 0 rgba(0,0,0,.12), inset 1px 0 0 rgba(0,0,0,.06), inset -1px 0 0 rgba(0,0,0,.06);
+        }
     }
 `;
