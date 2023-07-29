@@ -12,18 +12,6 @@ export default styled.div`
     overflow-y: auto;
     background-color: rgba(0,0,0,.8);
 
-     .button-close {
-         position: fixed;
-         top: 3%;
-         right: 2%;
-         z-index: 99999;
-        
-         .image-button {
-             cursor: pointer;
-             filter: invert(100%) sepia(80%) saturate(2%) hue-rotate(54deg) brightness(111%) contrast(101%);
-         }
-     }
-
      .modal-container {
         position: absolute;
         top: 50%;
@@ -37,6 +25,25 @@ export default styled.div`
         border-radius: .5em;
         box-sizing: border-box;
         overflow-y: scroll;
+
+         .button-close {
+             position: fixed;
+             top: 3%;
+             right: 2%;
+             z-index: 99999;
+
+             .image-button {
+                 cursor: pointer;
+                 opacity: .6;
+                 transition: 150ms;
+                 width: 1.2em;
+                 height: 1.2em;
+                 
+                 &:hover {
+                     opacity: 1;
+                 }
+             }
+         }
         
          .modal-body {
              overflow: auto;

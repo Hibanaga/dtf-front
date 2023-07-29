@@ -128,7 +128,10 @@ const LayoutHeader: FunctionComponent<Props> = ({ }) => {
             </Container>
 
             {isOpenModalForm && (
-                <Modal onClose={() => setIsOpenModalForm(false)}>
+                <Modal
+                    hasCancelButton
+                    onClose={() => setIsOpenModalForm(false)}
+                >
                     <LoginForm />
                 </Modal>
             )}

@@ -5,6 +5,8 @@ import variables from 'theme/styles/vars';
 export default styled.div`
     height: 100%;
     
+    display: flex;
+    
     .column-preview {
         position: relative;
         width: 35%;
@@ -58,6 +60,7 @@ export default styled.div`
     
     .column-form {
         width: 65%;
+        height: 100%;
     }
     
     @media all and (max-width: ${variables.tabletS}) {

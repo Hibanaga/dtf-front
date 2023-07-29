@@ -1,11 +1,15 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 
 import Image from 'components/layout/Image';
+import SignInForm from 'components/modules/LoginForm/sections/SignInForm';
+import SignUpForm from 'components/modules/LoginForm/sections/SignUpForm';
 
 import { Props } from './index';
 import StyledComponent from './styles';
 
 const LoginForm: FunctionComponent<Props> = ({ children }) => {
+    const [isLoginForm, setIsLoginForm] = useState(false);
+
     const previewImages = [
         { src: '/images/login/cards.png', alt: '', className: 'image-cards' },
         { src: '/images/login/console.png', alt: '', className: 'image-console' },
@@ -25,7 +29,8 @@ const LoginForm: FunctionComponent<Props> = ({ children }) => {
                 ))}
             </div>
             <div className="column-form">
-
+                <SignUpForm />
+                {/*{isLoginForm ? <SignInForm /> : <SignUpForm />}*/}
             </div>
         </StyledComponent>
     );
