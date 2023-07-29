@@ -13,4 +13,11 @@ export default {
     mobileM: '480px',
     mobileS: '360px',
     mobileXS: '281px',
+
+    theme: {
+        default: {
+            primary: '#d9f5ff',
+            hoverIcon: '#1693e5',
+        },
+    },
 };

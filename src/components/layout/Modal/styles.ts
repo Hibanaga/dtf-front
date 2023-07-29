@@ -25,16 +25,18 @@ export default styled.div`
      }
 
      .modal-container {
-          position: relative;
-          margin: 4em auto;
-          width: 100%;
-          max-width: 65em;
-          background-color: rgba(255,255,255,1);
-          box-shadow: 0 6px 20px rgba(31, 33, 34, 0.1);
-          padding: .5em;
-          border-radius: .5em;
-          box-sizing: border-box;
-          overflow-y: scroll;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        max-width: 65em;
+        background-color: rgba(255,255,255,1);
+        box-shadow: 0 6px 20px rgba(31, 33, 34, 0.1);
+        padding: .5em;
+        border-radius: .5em;
+        box-sizing: border-box;
+        overflow-y: scroll;
         
          .modal-body {
              overflow: auto;

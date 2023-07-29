@@ -19,6 +19,7 @@ export default styled.div`
                 
                 .input {
                     height: 100%;
+                    padding: .5em 1em;
                 }
             }
         }
