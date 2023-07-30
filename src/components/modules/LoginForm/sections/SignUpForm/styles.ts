@@ -8,34 +8,80 @@ export default styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+
+    .headline {
+        text-align: left;
+        width: 100%;
+        font-size: 1.25em;
+        font-weight: 600;
+    }
     
     .container-sign-up {
         display: flex;
         align-items: center;
         flex-direction: column;
         justify-content: center;
-        margin-bottom: 4em;
         
         max-width: 18em;
         width: 100%;
         
-        .headline {
-            text-align: left;
+        .row-sign-up {
             width: 100%;
-            font-family: 'Comfortaa', cursive;
+            
+            .inner-actions {
+                width: 100%;
+                margin-top: 2em;
+
+                .layout-button {
+                    &.layout-button-mail {
+                        width: 100%;
+
+                        .button {
+                            width: 100%;
+                            min-width: 100%;
+                        }
+                    }
+                }
+            }   
         }
-        
-        .inner-actions {
+
+        .sign-up-form {
+            height: 100%;
             width: 100%;
-            margin-top: 2em;
+            max-width: 18em;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+
+            > * {
+                height: 2.7em;
+                margin-bottom: 1em;
+            }
+
+            .headline {
+                height: initial;
+            }
 
             .layout-button {
-                &.layout-button-mail {
-                    width: 100%;
+                margin-bottom: 0;
 
+                &.submit-button {
                     .button {
-                        width: 100%;
-                        min-width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+
+            .layout-forms-simple-input {
+                .inner-input {
+                    height: 100%;
+
+                    .input {
+                        height: 100%;
+                        padding: 0 1em 0 .85em;
                     }
                 }
             }

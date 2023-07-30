@@ -187,17 +187,19 @@ export default styled.div`
     }
 
     &.style-secondary {
+        width: 100%;
+        
         &.variant-primary {
-            color: #FFF;
-
             .button {
-                background-color: #979797;
-                padding: 1.05em;
+                background-color: #4683d9;
+                color: #FFF;
+                transition: 150ms;
+                width: 100%;
             }
 
             &:hover {
                 .button {
-                    background-color: #E5E5E5;
+                    background-color: #437cce;
                 }
             }
         }

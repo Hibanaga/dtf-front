@@ -10,7 +10,7 @@ import { dedupeObjects } from 'utils/array';
 import { getItem, setItem } from 'utils/localStorage';
 
 import Button from 'components/layout/Button';
-import Input from 'components/layout/forms/SimpleInput';
+import Input, { InputVariants } from 'components/layout/forms/SimpleInput';
 import Popover from 'components/layout/Popover';
 import { useOnClickOutside } from 'hooks/useOnClickOutside';
 
@@ -58,6 +58,7 @@ const ModuleSearchBar: FunctionComponent<Props> = ({ children }) => {
                 className="smart-search-bar"
             >
                 <Input
+                    variant={InputVariants.Secondary}
                     placeholder="Пошук"
                     onFocus={() => setIsFocusedInput(true)}
                     onKeyDown={handleDetectKeydown}
