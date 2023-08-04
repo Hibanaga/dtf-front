@@ -4,6 +4,7 @@ import Component from './component';
 
 export interface Props {
     children?: ReactNode;
+    onSetCurrentForm: () => void;
 }
 
 Component.defaultProps = {

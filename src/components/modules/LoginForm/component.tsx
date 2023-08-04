@@ -29,8 +29,10 @@ const LoginForm: FunctionComponent<Props> = ({ children }) => {
                 ))}
             </div>
             <div className="column-form">
-                <SignUpForm />
-                {/*{isLoginForm ? <SignInForm /> : <SignUpForm />}*/}
+                {isLoginForm
+                    ? <SignInForm onSetCurrentForm={() => setIsLoginForm(false)} />
+                    : <SignUpForm onSetCurrentForm={() => setIsLoginForm(true)} />
+                }
             </div>
         </StyledComponent>
     );

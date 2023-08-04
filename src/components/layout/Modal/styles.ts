@@ -38,6 +38,7 @@ export default styled.div`
                  transition: 150ms;
                  width: 1.2em;
                  height: 1.2em;
+                 color: #222;
                  
                  &:hover {
                      opacity: 1;

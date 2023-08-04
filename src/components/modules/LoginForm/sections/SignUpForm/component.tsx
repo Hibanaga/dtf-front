@@ -1,4 +1,6 @@
 import React, { FunctionComponent, useState } from 'react';
+import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
+import classnames from 'classnames';
 import { useFormik } from 'formik';
 
 import Button, { ButtonStyles } from 'components/layout/Button';
@@ -8,7 +10,7 @@ import { Props } from './index';
 import StyledComponent from './styles';
 
 //TODO: handle API request
-const ModuleLoginFormSectionSignUpForm: FunctionComponent<Props> = ({ children }) => {
+const ModuleLoginFormSectionSignUpForm: FunctionComponent<Props> = ({ children, onSetCurrentForm }) => {
     const [isAccessLoginForm, setIsAccessLoginForm] = useState(false);
 
     //TODO: implement validation to register
@@ -22,11 +24,20 @@ const ModuleLoginFormSectionSignUpForm: FunctionComponent<Props> = ({ children }
     });
 
     return (
-        <StyledComponent className="module-login-form-section-sign-up-form">
+        <StyledComponent className={classnames(['module-login-form-section-form', 'sign-up-form'])}>
+            {isAccessLoginForm && (
+                <div
+                    className="prev-button"
+                    onClick={() => setIsAccessLoginForm(false)}
+                >
+                    <ArrowBackIosRoundedIcon className="icon" />
+                    <span className="data-value">Назад</span>
+                </div>
+            )}
 
-            <div className="container-sign-up">
+            <div className="container">
                 {!isAccessLoginForm && (
-                    <div className="row-sign-up">
+                    <div className="row">
                         <h2 className="headline">Реєстрація</h2>
 
                         <div className="inner-actions">
@@ -42,7 +53,7 @@ const ModuleLoginFormSectionSignUpForm: FunctionComponent<Props> = ({ children }
 
                 {isAccessLoginForm && (
                     <form
-                        className="sign-up-form"
+                        className="form"
                         action={handleSubmit}
                     >
                         <h2 className="headline">Реєстрація</h2>
@@ -80,11 +91,16 @@ const ModuleLoginFormSectionSignUpForm: FunctionComponent<Props> = ({ children }
                     </form>
                 )}
 
-                <div className="inner-sign-in">
-                    <span className="data-sign-in">
+                <div className="inner-action">
+                    <span className="data-label">
                         Є акаунт?
                         {' '}
-                        <span className="button-sign-in">Ввійти</span>
+                        <span
+                            className="button-link"
+                            onClick={onSetCurrentForm}
+                        >
+                            Ввійти
+                        </span>
                     </span>
                 </div>
             </div>
