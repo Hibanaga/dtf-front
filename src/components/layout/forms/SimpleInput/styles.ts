@@ -11,19 +11,17 @@ export default styled.div`
     }
 
     &.primary-input {
+        width: 100%;
+        
         .input {
             box-sizing: border-box;
-            background-color: #caeaff;
+            background-color: #f5f5f5;
             box-shadow: none;
             border: none;
             transition: 150ms ease-in-out;
-            font-size: 1em;
-            color: #7f7f7f;
+            color: #222;
             padding: .75em 1em .85em;
-
-            &::placeholder {
-                color: #7f7f7f;
-            }
+            font-size: .9em;
 
             &:focus {
                 background-color: #FFF;
@@ -37,15 +35,63 @@ export default styled.div`
                 pointer-events: none;
             }
 
-            &:hover {
-                .input {
+            &.error-input {
+                border: 2px solid #DC2626;
+            }
+        }
+
+        &:hover {
+            .input {
+                &::placeholder {
+                    color: #7f7f7f;
+                }
+
+                &:hover {
                     background-color: #FFF;
                     box-shadow: 0 0 0 3px rgba(22,147,229,0.12);
                 }
             }
+        }
+    }
+
+    &.secondary-input {
+        .input {
+            box-sizing: border-box;
+            background-color: #caeaff;
+            box-shadow: none;
+            border: none;
+            transition: 150ms ease-in-out;
+            font-size: 1em;
+            color: #7f7f7f;
+            padding: .75em 1em .85em;
+
+            &:focus {
+                background-color: #FFF;
+                box-shadow: 0 0 0 3px rgba(22,147,229,0.12);
+            }
+
+            &:disabled {
+                background-color: rgba(224, 224, 224, 0.2);
+                border: none;
+                box-shadow: none;
+                pointer-events: none;
+            }
 
             &.error-input {
                 border: 2px solid #DC2626;
+            }
+        }
+
+        &:hover {
+            .input {
+                &::placeholder {
+                    color: #7f7f7f;
+                }
+
+                &:hover {
+                    background-color: #FFF;
+                    box-shadow: 0 0 0 3px rgba(22,147,229,0.12);
+                }
             }
         }
     }

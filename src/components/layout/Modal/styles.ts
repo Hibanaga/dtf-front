@@ -12,29 +12,39 @@ export default styled.div`
     overflow-y: auto;
     background-color: rgba(0,0,0,.8);
 
-     .button-close {
-         position: fixed;
-         top: 3%;
-         right: 2%;
-         z-index: 99999;
-        
-         .image-button {
-             cursor: pointer;
-             filter: invert(100%) sepia(80%) saturate(2%) hue-rotate(54deg) brightness(111%) contrast(101%);
-         }
-     }
-
      .modal-container {
-          position: relative;
-          margin: 4em auto;
-          width: 100%;
-          max-width: 65em;
-          background-color: rgba(255,255,255,1);
-          box-shadow: 0 6px 20px rgba(31, 33, 34, 0.1);
-          padding: .5em;
-          border-radius: .5em;
-          box-sizing: border-box;
-          overflow-y: scroll;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        max-width: 65em;
+        background-color: rgba(255,255,255,1);
+        box-shadow: 0 6px 20px rgba(31, 33, 34, 0.1);
+        padding: .5em;
+        border-radius: .5em;
+        box-sizing: border-box;
+        overflow-y: scroll;
+
+         .button-close {
+             position: fixed;
+             top: 3%;
+             right: 2%;
+             z-index: 99999;
+
+             .image-button {
+                 cursor: pointer;
+                 opacity: .6;
+                 transition: 150ms;
+                 width: 1.2em;
+                 height: 1.2em;
+                 color: #222;
+                 
+                 &:hover {
+                     opacity: 1;
+                 }
+             }
+         }
         
          .modal-body {
              overflow: auto;

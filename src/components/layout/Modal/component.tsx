@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import Image from 'next/image';
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 
 import { Props } from './index';
 import StyledComponent from './styles';
@@ -11,20 +11,16 @@ const LayoutModal: FunctionComponent<Props> = ({ children, hasCancelButton, onCl
                 className="modal-backdrop"
                 onClick={onClose}
             />
-            {hasCancelButton && (
-                <div className="button-close">
-                    <Image
-                        onClick={() => onClose && onClose()}
-                        src="/images/close-icon.svg"
-                        className="image-button"
-                        width={36}
-                        height={36}
-                        alt="alt layout toast image"
-                    />
-                </div>
-            )}
-
             <div className="modal-container">
+                {hasCancelButton && (
+                    <div className="button-close">
+                        <CloseRoundedIcon
+                            className="image-button"
+                            onClick={() => onClose && onClose()}
+                        />
+                    </div>
+                )}
+
                 <div className="modal-body">
                     {children}
                 </div>

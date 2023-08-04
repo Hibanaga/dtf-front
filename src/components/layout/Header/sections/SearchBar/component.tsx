@@ -10,7 +10,7 @@ import { dedupeObjects } from 'utils/array';
 import { getItem, setItem } from 'utils/localStorage';
 
 import Button from 'components/layout/Button';
-import Input from 'components/layout/forms/SimpleInput';
+import Input, { InputVariants } from 'components/layout/forms/SimpleInput';
 import Popover from 'components/layout/Popover';
 import { useOnClickOutside } from 'hooks/useOnClickOutside';
 
@@ -19,7 +19,7 @@ import StyledComponent from './styles';
 
 //TODO: after integrate API for search on system add redirect to click on element popover
 //TODO: handle situation when click to recent element, popover must save this element to searchbar, but now this doesn't work properly
-const ModuleSearchBar: FunctionComponent<Props> = ({ children }) => {
+const ModuleSearchBar: FunctionComponent<Props> = ({ children, onOpenLoginForm }) => {
     const ref = useRef(null);
 
     const [search, setSearch] = useState('');
@@ -58,6 +58,7 @@ const ModuleSearchBar: FunctionComponent<Props> = ({ children }) => {
                 className="smart-search-bar"
             >
                 <Input
+                    variant={InputVariants.Secondary}
                     placeholder="Пошук"
                     onFocus={() => setIsFocusedInput(true)}
                     onKeyDown={handleDetectKeydown}
@@ -88,6 +89,7 @@ const ModuleSearchBar: FunctionComponent<Props> = ({ children }) => {
                     position: IconPositionVariants.Start,
                     value: <EditOutlinedIcon />,
                 }}
+                onClick={onOpenLoginForm}
             >
                 Написати
             </Button>

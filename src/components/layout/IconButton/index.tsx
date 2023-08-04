@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ChangeEvent, ReactNode } from 'react';
 
 import Component from './component';
 
@@ -17,7 +17,7 @@ export interface Props {
     children: ReactNode;
     variant?: IconButtonVariants,
     size?: IconButtonSizes;
-    onClick?: () => void;
+    onClick?: (e: ChangeEvent<HTMLButtonElement>) => void;
     className?: string;
 }
 

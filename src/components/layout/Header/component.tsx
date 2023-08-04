@@ -13,10 +13,13 @@ import { getItem, setItem } from 'utils/localStorage';
 
 import Button, { ButtonVariants } from 'components/layout/Button';
 import Container from 'components/layout/Container';
+import NotificationsPopover from 'components/layout/Header/sections/NotificationsPopover';
+import SearchBar from 'components/layout/Header/sections/SearchBar';
 import IconButton from 'components/layout/IconButton';
-import NotificationsPopover from 'components/modules/NotificationsPopover';
-import SearchBar from 'components/modules/SearchBar';
+import LoginForm from 'components/modules/LoginForm';
 import { useOnClickOutside } from 'hooks/useOnClickOutside';
+
+import Modal from '../Modal';
 
 import { Props } from './index';
 import StyledComponent from './styles';
@@ -24,6 +27,7 @@ import StyledComponent from './styles';
 //TODO: Handle notification situation when user login and unlogin, and counter notifications
 const LayoutHeader: FunctionComponent<Props> = ({ }) => {
     const ref = useRef(null);
+    const [isOpenModalForm, setIsOpenModalForm] = useState(false);
 
     let hasNotifications = null;
     useEffect(() => {
@@ -61,7 +65,7 @@ const LayoutHeader: FunctionComponent<Props> = ({ }) => {
                     <h1 className="logo-text">GFU</h1>
                 </div>
                 <div className="column column-actions">
-                    <SearchBar />
+                    <SearchBar onOpenLoginForm={() => setIsOpenModalForm(true)} />
                 </div>
                 <div className="column column-activity">
                     <div
@@ -96,7 +100,11 @@ const LayoutHeader: FunctionComponent<Props> = ({ }) => {
                                         Авторизуйтесь або зареєструйтесь, щоб оцінювати матеріали, створювати записи та писати коментарі.
                                         </span>
                                         <div className="inner-login-actions">
-                                            <IconButton>
+                                            <IconButton onClick={() => {
+                                                setIsOpenModalForm(true);
+                                                setIsShowNotifications(false);
+                                            }}
+                                            >
                                                 <MailOutlineRoundedIcon />
                                             </IconButton>
                                         </div>
@@ -115,12 +123,22 @@ const LayoutHeader: FunctionComponent<Props> = ({ }) => {
                                 position:IconPositionVariants.Start,
                                 value: <LoginRoundedIcon />,
                             }}
+                            onClick={() => setIsOpenModalForm(true)}
                         >
                             Увійти
                         </Button>
                     </div>
                 </div>
             </Container>
+
+            {isOpenModalForm && (
+                <Modal
+                    hasCancelButton
+                    onClose={() => setIsOpenModalForm(false)}
+                >
+                    <LoginForm />
+                </Modal>
+            )}
         </StyledComponent>
     );
 };

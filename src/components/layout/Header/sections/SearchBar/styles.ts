@@ -6,6 +6,7 @@ export default styled.div`
     width: 100%;
     display: flex;
     justify-content: space-between;
+    max-height: 2.7em;
 
     .smart-search-bar {
         width: 60%;

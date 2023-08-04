@@ -4,7 +4,7 @@ import variables from 'theme/styles/vars';
 
 export default styled.header`
     height: 4em;
-    background-color: #d9f5ff;
+    background-color: ${variables.theme.default.primary};
     position: sticky;
     top: 0;
     left: 0;
@@ -71,14 +71,14 @@ export default styled.header`
                             transition: 150ms;
 
                             &:hover {
-                                color: #1693e5;
+                                color: ${variables.theme.default.hoverIcon};
                             }
                         }
 
                         &.active {
                             .icon {
                                 transform: rotate(30deg);
-                                color: #1693e5;
+                                color: ${variables.theme.default.hoverIcon};
                             }
                         }
                     }
@@ -124,19 +124,19 @@ export default styled.header`
                     align-items: center;
                     padding: .5em;
                     cursor: pointer;
-                    
+
                     .sign-in-button {
                         .button {
                             min-width: 4em;
-                            
+
                             .button-icon {
                                 margin-top: .175em;
-                                
+
                                 svg {
                                     transition: 150ms;
                                 }
                             }
-                            
+
                             .button-content {
                                 transition: 150ms;
                                 display: block;
@@ -149,17 +149,30 @@ export default styled.header`
                             .button {
                                 .button-icon {
                                     svg {
-                                        color: #1693e5;
+                                        color: ${variables.theme.default.hoverIcon};
                                     }
                                 }
 
                                 .button-content {
-                                    color: #1693e5;
+                                    color: ${variables.theme.default.hoverIcon};
                                 }
                             }
                         }
                     }
                 }
+            }
+        }
+    }
+
+    .layout-modal {
+        .modal-container {
+            max-width: 40em;
+            max-height: 30em;
+            height: 100%;
+            padding: 0;
+            
+            .modal-body {
+                height: 100%;
             }
         }
     }

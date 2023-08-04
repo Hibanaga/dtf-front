@@ -116,19 +116,19 @@ export default styled.div`
         &.variant-primary {
             .button {
                 background-color: #FFF;
-                box-shadow: inset 0 -1px 0 0 rgba(0,0,0,0.06), 0 1px 2px 0 rgba(0,0,0,0.06);
+                box-shadow: 0 1px 2px rgba(0,0,0,.08), inset 0 0 0 1px rgba(0,0,0,.06), inset 0 -1px 0 rgba(0,0,0,.12), inset 1px 0 0 rgba(0,0,0,.06), inset -1px 0 0 rgba(0,0,0,.06);
                 transition: 150ms ease-in-out;
             }
 
             &:hover {
                 .button {
-                    box-shadow: inset 0 -1px 0 0 rgba(0,0,0,0.06), 0 2px 4px 0 rgba(0,0,0,0.08);
+                    box-shadow: 0 1px 3px rgba(0,0,0,.12), inset 0 0 0 1px rgba(0,0,0,.06), inset 0 -1px 0 rgba(0,0,0,.12), inset 1px 0 0 rgba(0,0,0,.06), inset -1px 0 0 rgba(0,0,0,.06);
                 }
             }
             
             &:active {
                 .button {
-                    box-shadow: inset 0 -1px 0 0 rgba(0,0,0,0.06), 0 0 2px 0 rgba(0,0,0,0.04);
+                    box-shadow: inset 0 0 0 1px rgba(0,0,0,.06), inset 0 -1px 0 rgba(0,0,0,.12), inset 1px 0 0 rgba(0,0,0,.06), inset -1px 0 0 rgba(0,0,0,.06);
                 }
             }
         }
@@ -187,17 +187,19 @@ export default styled.div`
     }
 
     &.style-secondary {
+        width: 100%;
+        
         &.variant-primary {
-            color: #FFF;
-
             .button {
-                background-color: #979797;
-                padding: 1.05em;
+                background-color: #4683d9;
+                color: #FFF;
+                transition: 150ms;
+                width: 100%;
             }
 
             &:hover {
                 .button {
-                    background-color: #E5E5E5;
+                    background-color: #437cce;
                 }
             }
         }

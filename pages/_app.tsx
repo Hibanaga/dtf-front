@@ -1,7 +1,6 @@
 import React from 'react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 import { Global } from '@emotion/core';
 import { AppContextProvider } from 'context/AppContext';
 
@@ -15,8 +14,6 @@ import AppWrapper from '../src/components/wrapper/AppWrapper';
 import 'theme/styles/globals.css';
 
 const App = ({ Component, pageProps }: AppProps) => {
-    const router = useRouter();
-
     return (
         <AppContextProvider>
             <>
