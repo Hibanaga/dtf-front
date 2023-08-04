@@ -46,6 +46,11 @@ export interface ListProps extends Props {
     key: string;
 }
 
+export interface IconProps {
+    position: IconPositionVariants;
+    value: ReactNode;
+}
+
 export interface Props {
     children: any;
     type?: ButtonTypes;
@@ -53,10 +58,7 @@ export interface Props {
     className?: string;
     onClick?: Function;
     href?: string;
-    icon?: {
-        position: IconPositionVariants;
-        value: ReactNode;
-    };
+    icon?: IconProps;
     disabled?: boolean;
     size?: ButtonSizes;
     style?: ButtonStyles;

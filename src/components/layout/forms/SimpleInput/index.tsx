@@ -13,7 +13,7 @@ export interface Props {
     placeholder?: string;
     value?: string;
     onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-    onKeyDown?: (e: KeyboardEventHandler<HTMLInputElement>) => void;
+    onKeyDown?: (e: KeyboardEvent) => void;
     onFocus?: () => void;
     onBlur?: () => void;
     name?: string;

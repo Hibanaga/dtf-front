@@ -54,7 +54,7 @@ const ModuleLoginFormSectionSignUpForm: FunctionComponent<Props> = ({ children, 
                 {isAccessLoginForm && (
                     <form
                         className="form"
-                        action={handleSubmit}
+                        onSubmit={handleSubmit}
                     >
                         <h2 className="headline">Реєстрація</h2>
 

@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FormEvent, FunctionComponent, useState } from 'react';
 import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
 import classnames from 'classnames';
 import { useFormik } from 'formik';
@@ -59,7 +59,7 @@ const ModuleLoginFormSectionSignInForm: FunctionComponent<Props> = ({ children, 
                 {isAccessLoginForm && (
                     <form
                         className="form"
-                        action={handleSubmit}
+                        onSubmit={handleSubmit}
                     >
 
                         <h2 className="headline">

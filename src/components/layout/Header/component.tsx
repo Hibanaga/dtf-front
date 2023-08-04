@@ -29,7 +29,7 @@ const LayoutHeader: FunctionComponent<Props> = ({ }) => {
     const ref = useRef(null);
     const [isOpenModalForm, setIsOpenModalForm] = useState(false);
 
-    let hasNotifications = null;
+    let hasNotifications: boolean = Boolean(null);
     useEffect(() => {
         hasNotifications = localStorage && JSON.parse(getItem(LocalStorageKeys.UN_LOGIN_NOTIFICATION_STATUS) || '1');
     }, []);

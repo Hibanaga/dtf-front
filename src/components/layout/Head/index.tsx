@@ -4,13 +4,13 @@ import Component from './component';
 
 export interface Props {
     title?: string,
-    name: string,
+    name?: string,
     description?: string,
     children?: ReactNode
 }
 
 Component.defaultProps = {
-
+    name: '- Games For Ukraine',
 };
 
 export default Component;

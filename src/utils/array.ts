@@ -15,7 +15,7 @@ export function groupObjects(
 ): any[] {
     const output: { id: string, data: any, elements: any[] }[] = [];
 
-    const addToGroup = (groupId, groupData, element) => {
+    const addToGroup = (groupId: any, groupData: any, element: any) => {
         let addressGroupIndex = output.findIndex(group => group.id === groupId);
         if (addressGroupIndex === -1) {
             output.push({
