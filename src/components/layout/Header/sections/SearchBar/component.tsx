@@ -19,7 +19,7 @@ import StyledComponent from './styles';
 
 //TODO: after integrate API for search on system add redirect to click on element popover
 //TODO: handle situation when click to recent element, popover must save this element to searchbar, but now this doesn't work properly
-const ModuleSearchBar: FunctionComponent<Props> = ({ children }) => {
+const ModuleSearchBar: FunctionComponent<Props> = ({ children, onOpenLoginForm }) => {
     const ref = useRef(null);
 
     const [search, setSearch] = useState('');
@@ -89,6 +89,7 @@ const ModuleSearchBar: FunctionComponent<Props> = ({ children }) => {
                     position: IconPositionVariants.Start,
                     value: <EditOutlinedIcon />,
                 }}
+                onClick={onOpenLoginForm}
             >
                 Написати
             </Button>

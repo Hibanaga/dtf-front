@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import { Props } from './index';
 import StyledComponent from './styles';
 
-const LayoutIconButton: FunctionComponent<Props> = ({ children, className, variant, size }) => {
+const LayoutIconButton: FunctionComponent<Props> = ({ children, className, variant, size, onClick }) => {
     return (
         <StyledComponent
             className={classnames(
@@ -13,6 +13,7 @@ const LayoutIconButton: FunctionComponent<Props> = ({ children, className, varia
                 `${size}-size`,
                 className,
             )}
+            onClick={onClick}
         >
             {children}
         </StyledComponent>

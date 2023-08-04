@@ -65,7 +65,7 @@ const LayoutHeader: FunctionComponent<Props> = ({ }) => {
                     <h1 className="logo-text">GFU</h1>
                 </div>
                 <div className="column column-actions">
-                    <SearchBar />
+                    <SearchBar onOpenLoginForm={() => setIsOpenModalForm(true)} />
                 </div>
                 <div className="column column-activity">
                     <div
@@ -100,7 +100,11 @@ const LayoutHeader: FunctionComponent<Props> = ({ }) => {
                                         Авторизуйтесь або зареєструйтесь, щоб оцінювати матеріали, створювати записи та писати коментарі.
                                         </span>
                                         <div className="inner-login-actions">
-                                            <IconButton>
+                                            <IconButton onClick={() => {
+                                                setIsOpenModalForm(true);
+                                                setIsShowNotifications(false);
+                                            }}
+                                            >
                                                 <MailOutlineRoundedIcon />
                                             </IconButton>
                                         </div>
