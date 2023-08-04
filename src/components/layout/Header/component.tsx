@@ -17,6 +17,7 @@ import NotificationsPopover from 'components/layout/Header/sections/Notification
 import SearchBar from 'components/layout/Header/sections/SearchBar';
 import IconButton from 'components/layout/IconButton';
 import LoginForm from 'components/modules/LoginForm';
+import Sidebar from 'components/modules/Sidebar';
 import { useOnClickOutside } from 'hooks/useOnClickOutside';
 
 import Modal from '../Modal';
@@ -27,6 +28,7 @@ import StyledComponent from './styles';
 //TODO: Handle notification situation when user login and unlogin, and counter notifications
 const LayoutHeader: FunctionComponent<Props> = ({ }) => {
     const ref = useRef(null);
+    const [isOpenSideBar, setIsOpenSideBar] = useState(false);
     const [isOpenModalForm, setIsOpenModalForm] = useState(false);
 
     let hasNotifications: boolean = Boolean(null);
@@ -58,88 +60,97 @@ const LayoutHeader: FunctionComponent<Props> = ({ }) => {
     };
 
     return (
-        <StyledComponent className="layout-header">
-            <Container className="layout-layout-container">
-                <div className="column column-menu">
-                    <Hamburger size={25} />
-                    <h1 className="logo-text">GFU</h1>
-                </div>
-                <div className="column column-actions">
-                    <SearchBar onOpenLoginForm={() => setIsOpenModalForm(true)} />
-                </div>
-                <div className="column column-activity">
-                    <div
-                        ref={ref}
-                        className="inner-notifications"
-                    >
+        <>
+            <StyledComponent className="layout-header">
+                <Container className="layout-layout-container">
+                    <div className="column column-menu">
+                        <Hamburger
+                            size={25}
+                            onToggle={(newValue) => setIsOpenSideBar(newValue)}
+                        />
+                        <h1 className="logo-text">GFU</h1>
+                    </div>
+                    <div className="column column-actions">
+                        <SearchBar onOpenLoginForm={() => setIsOpenModalForm(true)} />
+                    </div>
+                    <div className="column column-activity">
                         <div
-                            className={classnames([
-                                'icon-button-notification',
-                                isShowNotifications && 'active',
-                            ])}
-                            onClick={handleToggleNotificationButton}
+                            ref={ref}
+                            className="inner-notifications"
                         >
-                            <NotificationsNoneRoundedIcon className="icon" />
+                            <div
+                                className={classnames([
+                                    'icon-button-notification',
+                                    isShowNotifications && 'active',
+                                ])}
+                                onClick={handleToggleNotificationButton}
+                            >
+                                <NotificationsNoneRoundedIcon className="icon" />
 
-                            {hasUnLoginNotification && (
-                                <div className="inner-counter-notification">
-                                    <span className="notification-count">1</span>
-                                </div>
-                            )}
-                        </div>
-
-                        {isShowNotifications && (
-                            <NotificationsPopover headline={'Повідомлення'}>
-                                <div className="template-notification-un-login-element">
-                                    <div className="inner-icon">
-                                        <PriorityHighRoundedIcon className="icon" />
+                                {hasUnLoginNotification && (
+                                    <div className="inner-counter-notification">
+                                        <span className="notification-count">1</span>
                                     </div>
+                                )}
+                            </div>
 
-                                    <div className="inner-content">
-                                        <span className="data-text">
+                            {isShowNotifications && (
+                                <NotificationsPopover headline={'Повідомлення'}>
+                                    <div className="template-notification-un-login-element">
+                                        <div className="inner-icon">
+                                            <PriorityHighRoundedIcon className="icon" />
+                                        </div>
+
+                                        <div className="inner-content">
+                                            <span className="data-text">
                                         Авторизуйтесь або зареєструйтесь, щоб оцінювати матеріали, створювати записи та писати коментарі.
-                                        </span>
-                                        <div className="inner-login-actions">
-                                            <IconButton onClick={() => {
-                                                setIsOpenModalForm(true);
-                                                setIsShowNotifications(false);
-                                            }}
-                                            >
-                                                <MailOutlineRoundedIcon />
-                                            </IconButton>
+                                            </span>
+                                            <div className="inner-login-actions">
+                                                <IconButton onClick={() => {
+                                                    setIsOpenModalForm(true);
+                                                    setIsShowNotifications(false);
+                                                }}
+                                                >
+                                                    <MailOutlineRoundedIcon />
+                                                </IconButton>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </NotificationsPopover>
-                        )}
+                                </NotificationsPopover>
+                            )}
 
+                        </div>
+
+                        <div className="inner-sign-in">
+                            <Button
+                                className="sign-in-button"
+                                variant={ButtonVariants.Simple}
+                                icon={{
+                                    position:IconPositionVariants.Start,
+                                    value: <LoginRoundedIcon />,
+                                }}
+                                onClick={() => setIsOpenModalForm(true)}
+                            >
+                                Увійти
+                            </Button>
+                        </div>
                     </div>
+                </Container>
 
-                    <div className="inner-sign-in">
-                        <Button
-                            className="sign-in-button"
-                            variant={ButtonVariants.Simple}
-                            icon={{
-                                position:IconPositionVariants.Start,
-                                value: <LoginRoundedIcon />,
-                            }}
-                            onClick={() => setIsOpenModalForm(true)}
-                        >
-                            Увійти
-                        </Button>
-                    </div>
-                </div>
-            </Container>
+                {isOpenModalForm && (
+                    <Modal
+                        hasCancelButton
+                        onClose={() => setIsOpenModalForm(false)}
+                    >
+                        <LoginForm />
+                    </Modal>
+                )}
+            </StyledComponent>
 
-            {isOpenModalForm && (
-                <Modal
-                    hasCancelButton
-                    onClose={() => setIsOpenModalForm(false)}
-                >
-                    <LoginForm />
-                </Modal>
-            )}
-        </StyledComponent>
+            <Sidebar>
+
+            </Sidebar>
+        </>
     );
 };
 
