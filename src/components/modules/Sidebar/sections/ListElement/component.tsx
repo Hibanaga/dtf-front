@@ -3,10 +3,20 @@ import React, { FunctionComponent } from 'react';
 import { Props } from './index';
 import StyledComponent from './styles';
 
-const ModuleSidebarSectionListElement: FunctionComponent<Props> = ({ children }) => {
+const ModuleSidebarSectionListElement: FunctionComponent<Props> = ({ children, image, label, url }) => {
     return (
-        <StyledComponent className="module-side-bar-section-list-element">
-
+        <StyledComponent
+            href={url}
+            className="module-side-bar-section-list-element"
+        >
+            {image && (
+                <div className="inner-image">
+                    {image}
+                </div>
+            )}
+            <div className="data-label">
+                {label}
+            </div>
         </StyledComponent>
     );
 };

@@ -7,12 +7,16 @@ export default styled.div`
     width: 100%;
     height: 100%;
     padding-top: 4em;
+    box-sizing: border-box;
     
     position: fixed;
     top: 0;
     left: 0;
-    background-color: red;
     z-index: 0;
+    
+    .list {
+        padding: .5em;
+    }
    
     @media all and (max-width: ${variables.tabletS}) {
     }
