@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, KeyboardEvent } from 'react';
 import classNames from 'classnames';
 
 import SimpleError from 'components/layout/forms/SimpleError';
@@ -7,7 +7,7 @@ import SimpleLabel from 'components/layout/forms/SimpleLabel';
 import { Props } from './index';
 import StyledComponent from './styles';
 
-const SimpleInput: FunctionComponent<Props> = ({ id, label, placeholder, value, onChange, type, name, wrapperCss, error, disabled, variant, ...restEventHandlers }) => {
+const SimpleInput: FunctionComponent<Props> = ({ id, label, placeholder, value, onChange, type, name, wrapperCss, error, disabled, variant, onKeyDown, ...restEventHandlers }) => {
     return (
         <StyledComponent className={classNames([
             'layout-forms-simple-input',
@@ -35,6 +35,7 @@ const SimpleInput: FunctionComponent<Props> = ({ id, label, placeholder, value, 
                     onChange={onChange}
                     value={value}
                     disabled={disabled}
+                    onKeyDown={(e) => onKeyDown && onKeyDown(e as any)}
                     {...restEventHandlers}
                 />
                 {error && <SimpleError error={error} />}

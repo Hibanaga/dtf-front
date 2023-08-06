@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
+import React, { FunctionComponent, KeyboardEventHandler, useEffect, useRef, useState } from 'react';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 
@@ -43,7 +43,7 @@ const ModuleSearchBar: FunctionComponent<Props> = ({ children, onOpenLoginForm }
         }
     }, []);
 
-    const handleDetectKeydown = (e) => {
+    const handleDetectKeydown = (e: KeyboardEvent) => {
         if (e.keyCode === 13) {
             const newValueRecentQuestions = dedupeObjects([...recentSearchItems, { label: search, value: search }], 'value');
             setRecentSearchItems(newValueRecentQuestions);

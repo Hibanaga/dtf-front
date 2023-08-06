@@ -4,7 +4,7 @@ import classnames from 'classnames';
 
 import { IconPositionVariants } from 'types/page';
 
-import { ButtonElements, Props } from './index';
+import { ButtonElements, IconProps, Props } from './index';
 import StyledComponent from './styles';
 
 const LayoutButton: FunctionComponent<Props> = ({
@@ -54,7 +54,7 @@ const LayoutButton: FunctionComponent<Props> = ({
         return  <span className="button-content">{children}</span>;
     };
 
-    const getIcon = (icon) => {
+    const getIcon = (icon: IconProps) => {
         if (!icon) return null;
 
         return <span className={classnames(['button-icon', icon.position])}>{icon.value}</span>;

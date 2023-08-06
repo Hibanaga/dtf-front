@@ -1,4 +1,4 @@
-import { ChangeEvent, ReactNode } from 'react';
+import { MouseEventHandler, ReactNode } from 'react';
 
 import Component from './component';
 
@@ -17,7 +17,7 @@ export interface Props {
     children: ReactNode;
     variant?: IconButtonVariants,
     size?: IconButtonSizes;
-    onClick?: (e: ChangeEvent<HTMLButtonElement>) => void;
+    onClick?: MouseEventHandler<HTMLDivElement>;
     className?: string;
 }
 

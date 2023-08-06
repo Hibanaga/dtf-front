@@ -3,14 +3,13 @@ import { ReactNode } from 'react';
 import Component from './component';
 
 export interface Props {
-    title?: string,
-    name?: string,
-    description?: string,
-    children?: ReactNode
+    children?: ReactNode;
+    label: string;
+    image: ReactNode;
+    url: string;
 }
 
 Component.defaultProps = {
-    name: '- Games For Ukraine',
 };
 
 export default Component;
