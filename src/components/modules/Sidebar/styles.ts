@@ -8,6 +8,9 @@ export default styled.div`
     height: 100%;
     padding-top: 4em;
     box-sizing: border-box;
+    pointer-events: none;
+    opacity: 0;
+    transition: 150ms;
     
     position: fixed;
     top: 0;
@@ -16,6 +19,12 @@ export default styled.div`
     
     .list {
         padding: .5em;
+    }
+    
+    &.animated-in {
+        pointer-events: initial;
+        max-width: 12.5em;
+        opacity: 1;
     }
    
     @media all and (max-width: ${variables.tabletS}) {

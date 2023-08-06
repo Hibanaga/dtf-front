@@ -12,7 +12,7 @@ import ListElement from 'components/modules/Sidebar/sections/ListElement';
 import { Props } from './index';
 import StyledComponent from './styles';
 
-const ModuleSidebar: FunctionComponent<Props> = ({ children }) => {
+const ModuleSidebar: FunctionComponent<Props> = ({ isOpen, children }) => {
     const treeList = [
         { label: 'Популярне', image: <FeedOutlinedIcon className="icon" />, url: Routes.Popular },
         { label: 'Свіже', image: <AccessTimeOutlinedIcon className="icon" />, url: Routes.New },
@@ -21,7 +21,7 @@ const ModuleSidebar: FunctionComponent<Props> = ({ children }) => {
     ];
 
     return (
-        <StyledComponent className="module-side-bar">
+        <StyledComponent className={classnames(['module-side-bar', isOpen && 'animated-in' ])}>
             <div className={classnames(['list', 'activities'])}>
                 {treeList.map((element) => (
                     <ListElement

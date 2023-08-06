@@ -147,9 +147,7 @@ const LayoutHeader: FunctionComponent<Props> = ({ }) => {
                 )}
             </StyledComponent>
 
-            <Sidebar>
-
-            </Sidebar>
+            <Sidebar isOpen={isOpenSideBar} />
         </>
     );
 };
